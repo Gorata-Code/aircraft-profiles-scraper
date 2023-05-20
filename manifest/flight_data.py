@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup, ResultSet
 
 
 def search_query(user_search_query: str) -> None:
+
     ALL_AIRCRAFT: [str] = const.CIVIL_AIR_TRANSPORT_LIST + const.MILITARY_AIR_TRANSPORT_LIST
 
     RANDOM_AIRCRAFT: str = ''
@@ -18,11 +19,12 @@ def search_query(user_search_query: str) -> None:
     if user_search_query == 'A':
         profile_to_search_for = input(f'\nPlease type aircraft name here in full(e.g. {RANDOM_AIRCRAFT}): ').strip(). \
             replace(' ', '_')
+
         if profile_to_search_for.replace("_", " ") not in ALL_AIRCRAFT:
             print(f'\n\tSorry, we do not have a record of the aircraft name "{profile_to_search_for}".')
-            sys.exit(0)
 
-        single_aircraft_profile(profile_to_search_for)
+        elif profile_to_search_for.replace("_", " ") in ALL_AIRCRAFT:
+            single_aircraft_profile(profile_to_search_for)
 
     elif user_search_query == 'B':
         profile_to_search_for = f'{RANDOM_AIRCRAFT.strip().replace(" ", "_")}'
@@ -34,7 +36,6 @@ def search_query(user_search_query: str) -> None:
 
     else:
         print('\nInvalid input.')
-        sys.exit(0)
 
 
 def single_aircraft_profile(aircraft_to_profile):
@@ -75,9 +76,10 @@ def single_aircraft_profile(aircraft_to_profile):
                 pass
 
     except AttributeError:
-        print('************************************************************************')
+        print('******************************************************************************')
         print('\tMAYDAY! Information on this aircraft is currently unavailable, sorry.')
-        print('************************************************************************')
+        print('******************************************************************************')
+        input('\nPress Enter to Exit & Try Again.')
         sys.exit(0)
 
     write_to_file(f'{aircraft_to_profile.replace("_", " ")} Aircraft Profile.csv', RECORD_HEADINGS, RECORD_VALUES)
