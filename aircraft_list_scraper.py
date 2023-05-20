@@ -1,4 +1,5 @@
-from manifest.flight_data import *
+import sys
+from manifest.flight_data import search_query
 
 
 def script_summary() -> None:
@@ -39,9 +40,10 @@ def black_box(search_params) -> None:
             input('\nPress Enter To Exit.\n')
             sys.exit(1)
 
-        elif 'Timed out receiving message from renderer' or 'cannot determine loading status' in str(exp):
-            print(str(exp))
-            print('\nPlease try again.')
+        elif 'Timed out receiving message from renderer' or 'cannot determine loading status' or 'Max retries ' \
+                                                                                                 'exceeded with url' \
+                in str(exp):
+            print('\n\t**Failed to establish a new connection, please check your internet connection and try again**')
 
         elif 'ERR_NAME_NOT_RESOLVED' or 'ERR_CONNECTION_CLOSED' or 'unexpected command response' in str(exp):
             print('\nYour internet connection may have been interrupted.')
@@ -53,6 +55,8 @@ def black_box(search_params) -> None:
 
         input('\nPress Enter to Exit & Try Again.')
         sys.exit(1)
+    
+    input('\nPress Enter to Exit.')
 
 
 def main() -> None:
