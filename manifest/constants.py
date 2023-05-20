@@ -1,5 +1,5 @@
-BASE_URL = 'https://en.wikipedia.org/wiki/List_of_aircraft_by_date_and_usage_category'
 AIRCRAFT_BASE_URL = 'https://en.wikipedia.org/wiki/'
+BASE_URL = 'https://en.wikipedia.org/wiki/List_of_aircraft_by_date_and_usage_category'
 CIVIL_AIR_TRANSPORT_LIST = ['Airco DH.4A', 'Airco DH.9C', 'Airco DH.16', 'BAT F.K.26', 'Blériot-SPAD S.27',
                             'Curtiss Eagle', 'Farman F.50P', 'Farman F.60 Goliath', 'Grahame-White Charabanc',
                             'Junkers F.13', 'Nieuport-Delage NiD 30', 'Potez SEA VII', 'Sopwith Wallaby',
